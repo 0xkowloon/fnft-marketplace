@@ -25,7 +25,7 @@ contract FNFTFactory is
     address public override vaultManager;
 
     /// @notice fee exclusion for swaps
-    uint256 public override swapFee;
+    uint64 public override swapFee;
 
     /// @notice the maximum auction length
     uint256 public override maxAuctionLength;
@@ -194,7 +194,7 @@ contract FNFTFactory is
         } else if (feeType == FeeType.SwapFee) {
             if (_fee > 500) revert FeeTooHigh();
             emit UpdateSwapFee(swapFee, _fee);
-            swapFee = _fee;
+            swapFee = uint64(_fee);
         }
     }
 
